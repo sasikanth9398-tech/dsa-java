@@ -1,0 +1,47 @@
+import java.util.Scanner;
+
+class atm {
+    public static void main(String[] args) {
+
+        int pin = 9398;
+        int balance = 10000;
+        Scanner sc = new Scanner(System.in);
+
+        int attempts = 0;
+
+        for (; attempts < 3; attempts++) {
+
+            System.out.println("enter your pin:");
+            int enterPin = sc.nextInt();
+
+            if (enterPin == pin) {
+                System.out.println("correct pin");
+                break;
+            } else {
+                System.out.println("wrong pin");
+            }
+        }
+
+        if (attempts == 3) {
+
+            System.out.println("atm blocked");
+
+        } else {
+
+            System.out.println("balance: " + balance);
+            System.out.println("enter withdraw amount:");
+
+            int withdraw = sc.nextInt();
+
+            if (withdraw <= balance) {
+                balance = balance - withdraw;
+                System.out.println("withdraw successful");
+                System.out.println("new balance = " + balance);
+            } else {
+                System.out.println("insufficient balance");
+            }
+        }
+
+        sc.close();
+    }
+}
